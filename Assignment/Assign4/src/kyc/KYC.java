@@ -15,7 +15,7 @@ public class KYC {
             LocalDate formSignUpDateObject = LocalDate.parse(formSignUpDateInString,dateTimeFormatter);
             LocalDate presentDateObject = LocalDate.parse(presentDateInString,dateTimeFormatter);
             long elapsedTimeInDaysAfterSignUp= ChronoUnit.DAYS.between(formSignUpDateObject,presentDateObject);
-            if(elapsedTimeInDaysAfterSignUp<335)
+            if(elapsedTimeInDaysAfterSignUp<336)
             {
                 System.out.println("No Range");
             }
@@ -25,10 +25,16 @@ public class KYC {
                 LocalDate currentYearAnniversaryDate = formSignUpDateObject.plusYears(elapsedTimeInYearsAfterSignUp);
                 LocalDate startDateOfAnniversary = currentYearAnniversaryDate.minusDays(30);
                 LocalDate endDateOfAnniversary = currentYearAnniversaryDate.plusDays(30);
-                if(ChronoUnit.DAYS.between(startDateOfAnniversary,presentDateObject)<0)
+                long daysBetweenStartAndPresentDate=ChronoUnit.DAYS.between(startDateOfAnniversary,presentDateObject);
+                int presentYear=presentDateObject.getYear();
+                if(daysBetweenStartAndPresentDate<0)
                 {
                     startDateOfAnniversary=startDateOfAnniversary.minusYears(1);
                     endDateOfAnniversary=endDateOfAnniversary.minusYears(1);
+                }
+                else if((daysBetweenStartAndPresentDate%366==0 && presentYear%4==0)|| (daysBetweenStartAndPresentDate%365==0 && presentYear%4!=0)) {
+                    startDateOfAnniversary=presentDateObject;
+                    endDateOfAnniversary = presentDateObject.plusDays(0);
                 }
                 else if(ChronoUnit.DAYS.between(endDateOfAnniversary,presentDateObject)<0)
                 {
