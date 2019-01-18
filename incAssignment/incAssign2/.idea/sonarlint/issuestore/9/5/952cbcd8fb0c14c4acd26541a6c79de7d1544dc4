@@ -1,8 +1,10 @@
 
+bsquid:S2583"DChange this condition so that it does not always evaluate to "false"(™ÌÀò8÷õºÖ„-
 ‹ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÃĞ®Ö„-
 U
 squid:S106
 "9Replace this use of System.out or System.err by a logger.(ø“úA8õ¯­Ö„-
-[squid:S1197"8Move the array designator from the variable to the type.(ó¨µÿÿÿÿÿ8×ãßÖ„-
-_squid:S1126!"AReplace this if-then-else statement by a single return statement.(Áºßƒ8êé»Ö„-
-bsquid:S2583"DChange this condition so that it does not always evaluate to "false"(™ÌÀò8÷õºÖ„-
+_squid:S11261"AReplace this if-then-else statement by a single return statement.(Áºßƒ8êé»Ö„-
+isquid:UnusedPrivateMethod0"8Remove this unused private "isVampireLengthEven" method.(Ôèüúøÿÿÿÿ8ğŞ‡‚†-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(ÆğÕşÿÿÿÿ8ğŞ‡‚†-

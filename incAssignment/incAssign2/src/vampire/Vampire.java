@@ -17,16 +17,32 @@ public class Vampire {
     private static boolean isVampire(int vampireNumber) {
         String vampireString=""+vampireNumber;
         int vampireStringLength=vampireString.length();
-        String tempVampireString[]=new String[];
-        if(isVampireLengthEven(vampireStringLength))
+        allPermutations(vampireString,0,vampireStringLength-1);
+        return false;
+    }
+
+    private static void allPermutations(String vampireString, int l, int r) {
+        if (l == r)
+            System.out.println(vampireString);
+        else
         {
-            for(int i=0;i<vampireStringLength;i++) {
-                char vampireChar=vampireString.charAt(i);
-                if(!((i==0 && vampireChar=='0')||(i==vampireStringLength/2 && vampireChar=='0')))
-                    tempVampireString[i] += "" + vampireString.charAt(i);
+            for (int i = l; i <= r; i++)
+            {
+                vampireString = swap(vampireString,l,i);                 
+                allPermutations(vampireString, l+1, r);
+                vampireString = swap(vampireString,l,i);
             }
         }
-        return false;
+
+    }
+
+    private static String swap(String vampireString, int i, int j) {
+        char temp;
+        char[] charArray = vampireString.toCharArray();
+        temp = charArray[i] ;
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+        return String.valueOf(charArray);
     }
 
     private static boolean isVampireLengthEven(int vampireStringLength) {
